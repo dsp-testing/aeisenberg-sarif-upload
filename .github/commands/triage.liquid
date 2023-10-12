@@ -25,8 +25,3 @@ Based on our [prioritization process](https://github.com/github/docs-team/blob/m
 | {{ data.visibility }} | {{ data.impact }} | {{ data.effort }} | {{data.urgency}} | **{{ priority }}** |
 
 {{ data.followup }}
-
-{%- capture command %}
-<!-- gh issue add-labels="Priority {{priority}}" -->
-{%- endcapture %}
-{{ command | escape }}
