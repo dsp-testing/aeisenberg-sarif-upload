@@ -6,12 +6,20 @@ surfaces:
   - issue
 steps:
   - type: form
-    style: embedded
+    style: modal
     body:
+    - type: markdown
+      text: |
+        ## Triage
+
+        Triage an incoming issue to determine its priority score. The score is a value from 0-5.
+        A priority of 0 is given the most importance and 5 is the least.
     - type: dropdown
       attributes:
         id: visibility
         label: Visibility
+        description: |
+          Highly visible issues are more important.
         options:
           - label: Low visibility
             value: Low visibility
@@ -21,6 +29,8 @@ steps:
       attributes:
         id: impact
         label: Impact
+        description: |
+          High impact issues are more important.
         options:
           - label: Low impact
             value: Low impact
@@ -30,6 +40,8 @@ steps:
       attributes:
         id: effort
         label: Effort
+        description: |
+          Low effort issues are more important.
         options:
           - label: High effort
             value: High effort
@@ -39,6 +51,8 @@ steps:
       attributes:
         id: urgency
         label: Urgency
+        description: |
+          High urgency issues are more important.
         options:
           - label: Low urgency
             value: Low urgency
