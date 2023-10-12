@@ -1,0 +1,50 @@
+---
+trigger: triage
+title: Triage
+description: Triage an incoming issue to update content with a visibility, impact, urgency, effort, and priority.
+surfaces:
+  - issue
+steps:
+  - type: form
+    style: embedded
+    body:
+    - type: dropdown
+      attributes:
+        id: visibility
+        label: Visibility
+        options:
+          - label: Low visibility
+            value: Low visibility
+          - label: High visibility
+            value: High visibility
+    - type: dropdown
+      attributes:
+        id: impact
+        label: Impact
+        options:
+          - label: Low impact
+            value: Low impact
+          - label: High impact
+            value: High impact
+    - type: dropdown
+      attributes:
+        id: effort
+        label: Effort
+        options:
+          - label: High effort
+            value: High effort
+          - label: Low effort
+            value: Low effort
+    - type: dropdown
+      attributes:
+        id: urgency
+        label: Urgency
+        options:
+          - label: Low urgency
+            value: Low urgency
+          - label: Medium urgency
+            value: Medium urgency
+          - label: High urgency
+            value: High urgency
+  - type: fill
+    template_path: .github/commands/triage.liquid
