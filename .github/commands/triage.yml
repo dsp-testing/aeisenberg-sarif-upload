@@ -9,11 +9,12 @@ steps:
     style: modal
     body:
     - type: markdown
-      text: |
-        ## Triage
+      attributes:
+        text: |
+          ## Triage
 
-        Triage an incoming issue to determine its priority score. The score is a value from 0-5.
-        A priority of 0 is given the most importance and 5 is the least.
+          Triage an incoming issue to determine its priority score. The score is a value from 0-5.
+          A priority of 0 is given the most importance and 5 is the least.
     - type: dropdown
       attributes:
         id: visibility
