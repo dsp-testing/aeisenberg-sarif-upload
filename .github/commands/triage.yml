@@ -62,5 +62,12 @@ steps:
             value: Medium urgency
           - label: High urgency
             value: High urgency
+    - type: textarea
+      attributes:
+        label: Additional details (optional)
+        id: followup
+        value: No additional details
+        description: |
+          If you have additional details that could change this issue's priority, please follow up here so we can revisit.
   - type: fill
     template_path: .github/commands/triage.liquid
