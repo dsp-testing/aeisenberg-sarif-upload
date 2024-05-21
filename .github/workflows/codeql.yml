@@ -11,6 +11,7 @@ on:
     - ready_for_review
     branches:
     - main
+    - NlightNFotis/base_triage_branch
   workflow_dispatch: {}
 
 permissions:
