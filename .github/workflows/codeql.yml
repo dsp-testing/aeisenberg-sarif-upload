@@ -21,6 +21,8 @@ permissions:
   statuses: write
   checks: read
 
+# `touch` comment from FOTIS to re-run CI -- second
+
 jobs:
   codeql:
     runs-on: ubuntu-latest
