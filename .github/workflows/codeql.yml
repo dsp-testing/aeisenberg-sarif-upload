@@ -40,9 +40,7 @@ jobs:
       env:
         GH_TOKEN: '${{ secrets.EXTRA_TOKEN }}'
       run: |
-        gh api \
-          -H "Accept: application/octet-stream" \
-          /repos/github/semmle-code/releases/assets/92775190 > "$RUNNER_TEMP/codeql-bundle.tar.gz"
+        curl -o "$RUNNER_TEMP/codeql-bundle.tar.gz" https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.17.3/codeql-bundle-linux64.tar.gz
 
     - name: Init
       uses: github/codeql-action/init@main
