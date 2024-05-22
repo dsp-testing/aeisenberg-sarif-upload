@@ -11,6 +11,7 @@ on:
     - ready_for_review
     branches:
     - main
+    - NlightNFotis/base_triage_branch
   workflow_dispatch: {}
 
 permissions:
@@ -21,53 +22,29 @@ permissions:
   statuses: write
   checks: read
 
+# `touch` comment from FOTIS to re-run CI -- second
+
 jobs:
   codeql:
     runs-on: ubuntu-latest
     env:
       TEST_MODE: true
-      # GITHUB_TOKEN: '${{ secrets.EXTRA_TOKEN }}'
+      GITHUB_TOKEN: '${{ secrets.EXTRA_TOKEN }}'
       CODEQL_PASS_CONFIG_TO_CLI: true
 
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
 
-    # - name: Download CLI
-    #   env:
-    #     GH_TOKEN: '${{ secrets.EXTRA_TOKEN }}'
-    #   run: |
-    #     gh api \
-    #       -H "Accept: application/octet-stream" \
-    #       /repos/github/semmle-code/releases/assets/93061909 > "$RUNNER_TEMP/codeql-bundle.tar.gz"
-
-        # echo "Downloaded to $RUNNER_TEMP/codeql-bundle.zip"
-        # ls -l "$RUNNER_TEMP/codeql-bundle.zip"
-        # unzip "$RUNNER_TEMP/codeql-bundle.zip" -d "$RUNNER_TEMP/codeql-bundle"
-        # tar -czf "$RUNNER_TEMP/codeql-bundle.tar.gz" -C "$RUNNER_TEMP/codeql-bundle" .
-        # "$RUNNER_TEMP/codeql-bundle/codeql/codeql" pack download codeql/javascript-all codeql/regex codeql/tutorial
-
     - name: Init
-      uses: github/codeql-action/init@henrymercer/fix/not-all-bundle-urls-contain-tag
+      uses: github/codeql-action/init@main
       with:
         # tools: https://github.com/github/semmle-code/releases/download/codeql-bundle-20230123/codeql-bundle.tar.gz
         # tools: https://api.github.com/repos/github/semmle-code/releases/assets/38586181
-        # tools: ${{ runner.temp }}/codeql-bundle.tar.gz
-        tools: https://github.com/dsp-testing/codeql-cli-nightlies/releases/download/delete-me/codeql-bundle-linux64.tar.gz
+        tools: "latest"
         config-file: ./.github/codeql/codeql-config.yml
-        languages: ruby
-        debug: true
-        db-location: ${{ runner.temp }}/codeql-database
+        languages: javascript
+        debug: "true"
 
-    # - name: Analyze
-    #   uses: github/codeql-action/analyze@aeisenberg/print-std-err
-
-    # - name: Upload artifacts
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: codeql-database
-    #     path: ${{ runner.temp }}/codeql-database
-
-    - name: Run resolve queries
-      run: |
-        codeql resolve queries codeql/ruby-queries:codeql-suites/ruby-security-experimental.qls
+    - name: Analyze
+      uses: github/codeql-action/analyze@main
