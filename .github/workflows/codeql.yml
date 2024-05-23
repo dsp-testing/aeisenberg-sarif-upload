@@ -47,4 +47,4 @@ jobs:
         debug: "true"
 
     - name: Analyze
-      uses: github/codeql-action/analyze@main
+      uses: github/codeql-action/analyze@NlightNFotis/debug_artefact_upload_fail
