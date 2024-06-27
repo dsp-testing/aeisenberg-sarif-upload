@@ -16,7 +16,7 @@
 		"locations" : [ {
 		    "physicalLocation" : {
 			"artifactLocation" : {
-			    "uri" : "fileURI"
+			    "uri" : "result.sarif"
 			},
 			"region" : {
 			    "startLine" : 2,
@@ -26,7 +26,7 @@
 		    }
 		} ],
 		"partialFingerprints" : {
-		    "primaryLocationLineHash" : "_TIME_:1"
+		    "primaryLocationLineHash" : "1:1"
 		}
 	    }]
 	}		
